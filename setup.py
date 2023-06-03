@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="helloPypi-topic",
-    version="0.0.2",
+    version="0.0.3",
     author="Caleb",
     description="A basic hello package",
     packages=find_packages(),
