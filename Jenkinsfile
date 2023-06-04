@@ -8,7 +8,7 @@ pipeline {
             sh """
               python3 -m pip install --upgrade build
               pip3 install twine
-              pip install bumb
+              pip3 install bump
             """
             }
         }
