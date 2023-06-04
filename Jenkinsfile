@@ -38,17 +38,11 @@ pipeline {
       }
     }
 
-    // stage('Push to github') {
-    //   steps {
-    //     withCredentials([gitUsernamePassword(credentialsId: 'Calebosam', gitToolName: 'Default')]) {
-    //       sh "git push origin main"
-    //     }
-    //   }
-    // }
-
     stage('Deploy To PyPi') {
       steps {
-        sh 'echo PyPi2'
+        withCredentials([usernamePassword(credentialsId: 'pypi-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+          sh "twine upload --username $USERNAME --password $PASSWORD dist/*"
+        }
       }
     }
   }
