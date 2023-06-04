@@ -1,9 +1,11 @@
 pipeline {
-  agent any
+  agent {
+        label 'jenkins-node-python-agent'
+    }
   stages {
         stage('Install Build tools') {
             steps {
-            sh 'python --version'
+            sh 'echo Hello'
             }
         }
         stage('Build Package') {
@@ -14,7 +16,7 @@ pipeline {
         }
      stage('Deploy To PyPi') {
        steps {
-            sh 'echo hello2'
+            sh 'python3 --version'
          }
        }
      }
