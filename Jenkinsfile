@@ -30,6 +30,7 @@ pipeline {
           /home/jenkins/.local/bin/bump
           git add .
           git commit -m 'create new version'
+          git log --oneline
         """
       }
     }
