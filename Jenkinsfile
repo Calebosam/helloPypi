@@ -26,11 +26,11 @@ pipeline {
     stage('Build Package') {
       steps {
         sh """
-          python3 setup.py sdist bdist_wheel
           git checkout main
           /home/jenkins/.local/bin/bump
           git add .
           git commit -m 'create new version'
+          python3 setup.py sdist bdist_wheel
         """
         withCredentials([gitUsernamePassword(credentialsId: 'Calebosam', gitToolName: 'Default')]) {
           sh "git push origin main"
