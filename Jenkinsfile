@@ -28,13 +28,17 @@ pipeline {
         sh """
           python3 setup.py sdist bdist_wheel
           /home/jenkins/.local/bin/bump
+          git add .
+          git commit -m 'create new version'
         """
       }
     }
 
     stage('Push to github') {
       steps {
-        sh 'git push origin main'
+        withCredentials([gitUsernamePassword(credentialsId: 'Calebosam', gitToolName: 'Default')]) {
+          sh "git push origin main"
+        }
       }
     }
 
