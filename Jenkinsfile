@@ -16,8 +16,8 @@ pipeline {
     stage('Configure git') {
       steps {
         sh """
-          git config --global user.email "$(git log -n 1 --pretty=format:%ae)"
-          git config --global user.name "$(git log -n 1 --pretty=format:%an)"
+          git config --global user.email caleb.osam@amalitech.com
+          git config --global user.name Calebosam
           git config -l
         """
       }
