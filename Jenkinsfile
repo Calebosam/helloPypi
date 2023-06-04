@@ -18,23 +18,29 @@ pipeline {
         sh """
           git config --global user.email caleb.osam@amalitech.com
           git config --global user.name Calebosam
-          git config -l
+        """
+      }
+    }
+
+    stage('Build Package') {
+      steps {
+        sh """
+          bump
+          python3 setup.py sdist bdist_wheel
         """
       }
     }
 
     stage('Push to github') {
       steps {
-            // sh 'git push --follow-tags origin HEAD'
-          sh 'echo PyPi'
-          
-         }
+        sh 'git push --follow-tags origin HEAD'
+      }
     }
 
     stage('Deploy To PyPi') {
       steps {
-          sh 'echo PyPi2'
-        }
+        sh 'echo PyPi2'
+      }
     }
   }
 }
