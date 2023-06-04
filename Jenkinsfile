@@ -38,7 +38,7 @@ pipeline {
     stage('Push to github') {
       steps {
         withCredentials([gitUsernamePassword(credentialsId: 'Calebosam', gitToolName: 'Default')]) {
-          sh "git remote -v"
+          sh "git push origin main"
         }
       }
     }
