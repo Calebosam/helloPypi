@@ -19,7 +19,6 @@ pipeline {
         sh """
           git config --global user.email caleb.osam@amalitech.com
           git config --global user.name Calebosam
-          git remote add origin https://github.com/Calebosam/helloPypi.git
         """
       }
     }
@@ -39,7 +38,7 @@ pipeline {
     stage('Push to github') {
       steps {
         withCredentials([gitUsernamePassword(credentialsId: 'Calebosam', gitToolName: 'Default')]) {
-          sh "git push -u origin main"
+          sh "git remote -v"
         }
       }
     }
