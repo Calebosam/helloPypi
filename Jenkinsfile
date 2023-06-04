@@ -41,7 +41,7 @@ pipeline {
     stage('Deploy To PyPi') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'pypi-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          sh "twine upload --username $USERNAME --password $PASSWORD dist/*"
+          h "/home/jenkins/.local/bin/twine upload --username $USERNAME --password $PASSWORD dist/*"
         }
       }
     }
