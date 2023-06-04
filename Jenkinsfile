@@ -27,13 +27,6 @@ pipeline {
       steps {
         sh """
           python3 setup.py sdist bdist_wheel
-        """
-      }
-    }
-
-    stage('Bump Version') {
-      steps {
-        sh """
           /home/jenkins/.local/bin/bump
         """
       }
@@ -41,7 +34,7 @@ pipeline {
 
     stage('Push to github') {
       steps {
-        sh 'git push --follow-tags origin HEAD'
+        sh 'git push origin main'
       }
     }
 
