@@ -5,13 +5,19 @@ pipeline {
   stages {
         stage('Install Build tools') {
             steps {
-            sh 'echo Hello'
+            sh """
+              python3 -m pip install --upgrade build
+              pip3 install twine
+              pip3 install bumb
+            """
             }
         }
         stage('Build Package') {
             
             steps {
-                sh 'echo hello world'
+                sh """
+                git --version
+                """
             }
         }
      stage('Deploy To PyPi') {
