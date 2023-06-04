@@ -9,7 +9,6 @@ pipeline {
           python3 -m pip install --upgrade build
           pip3 install twine
           pip3 install bump
-          bump
         """
       }
     }
@@ -27,7 +26,7 @@ pipeline {
       steps {
         sh """
           python3 setup.py sdist bdist_wheel
-          ls -a
+          /home/jenkins/.local/bin/bump
         """
       }
     }
