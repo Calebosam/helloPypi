@@ -9,6 +9,7 @@ pipeline {
           python3 -m pip install --upgrade build
           pip3 install twine
           pip3 install bump
+          pip3 install wheel
         """
       }
     }
