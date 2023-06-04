@@ -26,6 +26,13 @@ pipeline {
       steps {
         sh """
           python3 setup.py sdist bdist_wheel
+        """
+      }
+    }
+
+    stage('Bump Version') {
+      steps {
+        sh """
           /home/jenkins/.local/bin/bump
         """
       }
